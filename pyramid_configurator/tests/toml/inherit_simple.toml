@@ -1,0 +1,7 @@
+inherit = [
+  "simple.toml"
+]
+
+[simple]
+first = 5
+third = true

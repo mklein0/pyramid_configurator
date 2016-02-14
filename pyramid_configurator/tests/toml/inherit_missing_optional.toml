@@ -1,0 +1,8 @@
+inherit = [
+  "simple.toml",
+  "?noexist.toml"
+]
+
+[simple]
+first = 5
+fourth = [ 4, 5 ]

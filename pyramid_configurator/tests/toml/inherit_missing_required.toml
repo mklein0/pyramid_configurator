@@ -1,0 +1,7 @@
+inherit = [
+  "simple.toml",
+  "noexist.toml"
+]
+
+[simple]
+first = 5

@@ -1,0 +1,9 @@
+inherit = [
+  "inherit_missing_optional.toml",
+  "inherit_simple.toml"
+]
+
+[simple]
+first = 8
+third = 0
+

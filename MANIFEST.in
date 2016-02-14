@@ -1,0 +1,2 @@
+include *.rst *.txt
+include pyramid_configurator/tests/toml/*.toml
