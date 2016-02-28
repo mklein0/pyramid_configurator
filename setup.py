@@ -2,28 +2,42 @@
 """
 """
 import os
+import re
 import pkg_resources
 
 from setuptools import setup, find_packages
 
 
+def read_version(fobj):
+    regex = re.compile(r'^__version__\s*=\s*u?[\'"]([^\'"]+)')
+    for line in fobj:
+        matches = regex.match(line)
+        if matches:
+            return matches.group(1)
 
-here = os.path.abspath(os.path.dirname(__file__))
+    # Else unknown version
+    return 'unknown'
 
-with open(os.path.join(here, 'README.rst')) as f:
+
+HERE = os.path.abspath(os.path.dirname(__file__))
+
+with open(os.path.join(HERE, 'pyramid_configurator', '__init__.py')) as f:
+    module_version = read_version(f)
+
+with open(os.path.join(HERE, 'README.rst')) as f:
     README = f.read()
 
-with open(os.path.join(here, 'CHANGES.rst')) as f:
+with open(os.path.join(HERE, 'CHANGES.rst')) as f:
     CHANGES = f.read()
 
-with open(os.path.join(here, 'requirements.txt')) as f:
+with open(os.path.join(HERE, 'requirements.txt')) as f:
     requires = map(str, pkg_resources.parse_requirements(f.read()))
 
 
 setup(
     name='pyramid_configurator',
     description='pyramid_configurator',
-    version='0.0.dev0',
+    version=module_version,
     long_description=README + '\n\n' + CHANGES,
     classifiers=[
         "Programming Language :: Python",
